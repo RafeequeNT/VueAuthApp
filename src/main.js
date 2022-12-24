@@ -16,8 +16,8 @@ axios.interceptors.response.use(undefined, function (error) {
   }
 })
 
-axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'https://gabbyblog.herokuapp.com/';
+// axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://localhost:4000/users';
 
 Vue.config.productionTip = false
 

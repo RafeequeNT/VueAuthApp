@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-import store from '../store';
+// import store from '../store';
+import { isAuthenticatedUser } from '@/helpers/isAuthenticated';
 
 
 Vue.use(VueRouter)
@@ -48,7 +49,8 @@ const router = new VueRouter({
 })
 router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isAuthenticated) {
+   
+    if (isAuthenticatedUser()) {
       next()
       return
     }
@@ -59,7 +61,7 @@ router.beforeEach((to, from, next) => {
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.guest)) {
-    if (store.getters.isAuthenticated) {
+    if (isAuthenticatedUser()) {
       next("/posts");
       return;
     }

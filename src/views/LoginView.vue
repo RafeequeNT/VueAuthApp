@@ -33,12 +33,14 @@ export default {
   methods: {
     ...mapActions(["LogIn"]),
     async submit() {
-      const User = new FormData();
-      User.append("username", this.form.username);
-      User.append("password", this.form.password);
+      // const User = new FormData();
+      // User.append("username", this.form.username);
+      // User.append("password", this.form.password);
+      console.log("test");
       try {
-          await this.LogIn(User);
-          this.$router.push("/posts");
+          await this.LogIn({'username':this.form.username,'password':this.form.password});
+    this.$router.push("/posts");
+
           this.showError = false
       } catch (error) {
         this.showError = true

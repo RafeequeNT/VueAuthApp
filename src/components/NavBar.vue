@@ -19,8 +19,12 @@
       },
       methods: {
         async logout (){
+          
           await this.$store.dispatch('LogOut')
+         localStorage.clear();
+      
           this.$router.push('/login')
+
         }
       },
   }

@@ -10,7 +10,7 @@
                 <input type="text" name="title" v-model="form.title">
               </div>
               <div>
-                <textarea name="write_up" v-model="form.write_up" placeholder="Write up..."></textarea>
+                <textarea name="write_up" v-model="form.description" placeholder="Write up..."></textarea>
               </div>
               <button type="submit"> Submit</button>
             </form>
@@ -20,8 +20,8 @@
             <li v-for="post in Posts" :key="post.id">
               <div id="post-div">
                 <p>{{post.title}}</p>
-                <p>{{post.write_up}}</p>
-                <p>Written By: {{post.author.username}}</p>
+                <p>{{post.description}}</p>
+                <!-- <p>Written By: {{post.username}}</p> -->
               </div>
             </li>
           </ul>
@@ -42,7 +42,7 @@ export default {
     return {
       form: {
         title: '',
-        write_up: '',
+        description: '',
       }
     };
   },
