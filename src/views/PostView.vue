@@ -10,18 +10,23 @@
                 <input type="text" name="title" v-model="form.title">
               </div>
               <div>
-                <textarea name="write_up" v-model="form.description" placeholder="Write up..."></textarea>
+                <label for="title">Author:</label>
+                <input type="text" name="name" v-model="form.name"/>
               </div>
+              <div>
+                <textarea name="write_up" v-model="form.description" placeholder="Write up..."></textarea>
+              </div> 
+              
               <button :disabled='isDisabled' type="submit"> Submit</button>
             </form>
         </div>
         <div class="posts" v-if="Posts">
           <ul>
-            <li v-for="post in Posts" :key="post.id">
+            <li v-for="post in Posts" :key="post.title">
               <div id="post-div">
                 <p>{{post.title}}</p>
                 <p>{{post.description}}</p>
-                <!-- <p>Written By: {{post.username}}</p> -->
+                <p>Written By: {{post.name}}</p>
               </div>
             </li>
           </ul>
@@ -43,6 +48,7 @@ export default {
       form: {
         title: '',
         description: '',
+        name:''
       }
     };
   },
@@ -61,7 +67,8 @@ export default {
         await this.CreatePost(this.form);
         this.form={
           title:'',
-          description:''
+          description:'',
+          name:''
         }
       } catch (error) {
         throw "Sorry you can't make a post now!"

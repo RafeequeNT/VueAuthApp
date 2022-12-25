@@ -3,12 +3,12 @@
         <div>
             <form @submit.prevent="submit">
               <div>
-                <label for="username">Username:</label>
-                <input type="text" name="username" v-model="form.username">
+                <label for="full_name">Full Name:</label>
+                <input type="text" name="full_name" v-model="form.fullName">
               </div>
               <div>
-                <label for="full_name">Full Name:</label>
-                <input type="text" name="full_name" v-model="form.full_name">
+                <label for="username">Username:</label>
+                <input type="text" name="username" v-model="form.username">
               </div>
               <div>
                 <label for="password">Password:</label>
@@ -29,7 +29,7 @@
       return {
         form: {
           username: "",
-          full_name: "",
+          fullName: "",
           password: "",
         },
         showError: false
