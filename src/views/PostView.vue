@@ -12,7 +12,7 @@
               <div>
                 <textarea name="write_up" v-model="form.description" placeholder="Write up..."></textarea>
               </div>
-              <button type="submit"> Submit</button>
+              <button :disabled='isDisabled' type="submit"> Submit</button>
             </form>
         </div>
         <div class="posts" v-if="Posts">
@@ -52,12 +52,17 @@ export default {
   },
   computed: {
     ...mapGetters({Posts: "StatePosts", User: "StateUser"}),
+    isDisabled : function(){ return this.form.description===''||this.form.title==='' }
   },
   methods: {
     ...mapActions(["CreatePost", "GetPosts"]),
     async submit() {
       try {
         await this.CreatePost(this.form);
+        this.form={
+          title:'',
+          description:''
+        }
       } catch (error) {
         throw "Sorry you can't make a post now!"
       }

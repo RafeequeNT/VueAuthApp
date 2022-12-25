@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <p>Heyyyyyy welcome to our blog, check out our posts</p>
+  <p>A simple post app created using vue and vuex</p>
   </div>
 </template>
 <script>
